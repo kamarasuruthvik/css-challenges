@@ -1,0 +1,121 @@
+:root {
+  --margin-between-lines: 30px;
+  --animation-delay: 1s;
+  --hamburger-line-thickness: 6px;
+}
+body {
+  margin: 0px;
+  background-color: rgb(63, 175, 130);
+}
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.line {
+  background-color: white;
+  width: 8em;
+  border: var(--hamburger-line-thickness) solid white;
+  border-radius: 10px;
+  box-shadow: -2px 3px 5px -3px rgba(0, 0, 0, 0.78);
+}
+.line1 {
+  position: relative;
+}
+.line2 {
+  margin: var(--margin-between-lines) 0 0 0;
+}
+
+.line3 {
+  margin: var(--margin-between-lines) 0 0 0;
+}
+
+@keyframes animate-line-2 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes animate-line-1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(
+      0,
+      calc(var(--margin-between-lines) + var(--hamburger-line-thickness) * 2),
+      0
+    );
+  }
+  100% {
+    transform: translate3d(
+        0,
+        calc(var(--margin-between-lines) + var(--hamburger-line-thickness) * 2),
+        0
+      )
+      rotate(45deg);
+  }
+}
+@keyframes animate-line-3 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(
+      0,
+      calc(
+        (var(--margin-between-lines) + var(--hamburger-line-thickness) * 2) *
+          (-1)
+      ),
+      0
+    );
+  }
+  100% {
+    transform: translate3d(
+        0,
+        calc(
+          (var(--margin-between-lines) + var(--hamburger-line-thickness) * 2) *
+            (-1)
+        ),
+        0
+      )
+      rotate(-45deg);
+  }
+}
+
+.line1.animate-line {
+  animation: animate-line-1 var(--animation-delay);
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+}
+
+.line2.animate-line {
+  animation: animate-line-2 var(--animation-delay);
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+}
+
+.line3.animate-line {
+  animation: animate-line-3 var(--animation-delay);
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border-left: 1em solid yellow;
+}
